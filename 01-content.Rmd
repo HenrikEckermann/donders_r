@@ -15,12 +15,13 @@ Check which questions we cover per session. One session is meant to consist of m
 
 **Session 2: Introduction to R**  
 
+- working directory demonstration
 - objects in R
 - functions and their arguments
 - data types
   - atomic vectors 
   - lists 
   - dataframes/tibbles 
-- subsetting different datatypes
+- subsetting vectors
 
 

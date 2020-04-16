@@ -231,5 +231,17 @@ A data frame is the representation of data in the format of a table where the co
 
 
 +++ 
-1. Read [Intro to R](https://datacarpentry.org/R-ecology-lesson/01-intro-to-r.html#conditional_subsetting)  
-2. Read chapter 2 of the [Tidyverse coding style guide](https://style.tidyverse.org/files.html)
+
+@snap[north]
+Homework 
+@snapend
+
+@snap[mid text-center text-05]
+1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
+2. Create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
+3. Create a dataframe/tibble out of these vectors using either the tibble or the dataframe function.
+4. Take one of the vectors and select:
+   - the last element
+   - all except the first element
+@snapend
+

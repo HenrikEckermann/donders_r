@@ -1,28 +1,72 @@
+# Guidelines to work with Rscripts   ----------------------
+
+
 # Introduce keyboard shortcut Cmd/Ctrl + Enter 
+
+
+# how to check the working directory
+getwd()
+
+# not recommended but possible
+setwd("/Users/henrikeckermann/workspace/dpb_lab/phd/donders_r")
+setwd("/Users/henrikeckermann/workspace/dpb_lab/phd/donders_r/donders_course")
+
+
+# absolut path on windows vs mac 
+windows_path <- "C:\\"
+mac_path <- "/"
+
+list.files(mac_path)
+
+file.exists(mac_path)
+file.exists(windows_path)
+
+# home/documents directory
+list.files("~")
+
+
+# DO NOT USE ABSOLUTE PATHS, e.g. the following path only works on my computer
+path1 <- "/Users/henrikeckermann/workspace/dpb_lab/phd/donders_r/donders_course/R"
+list.files(path1)
+
+# USE RELATIVE PATHS, e.g. this path will work on everyones computer who opened 
+# the rProject file with e.g. RStudio:
+
+path2 <- "R"
+list.files(path2)
+
+# this path will work on ANY system even if not using RStudio
+library(here)
+
+path3 <- here("R")
+list.files(path3)
+
+# CONCLUSION: work at least with relative paths and rProjects. Using the here
+# package makes your scripts useable also for people who do not use Rstudio/projects
+
+
 
 
 
 # In general, load packages in the beginning of a script:
 library(tidyverse)
+library(here)
 
-# Avoid functions to install packages or settings change in your script such as
-# install.packages("tidyverse") or 
-# setwd("/users/henrik/...")
-
-
+# Avoid functions to install packages such as
+# install.packages("tidyverse") 
 
 
 
 # R as calculator ---------------------------
 10 + 10 / 5 
 
-(10 + 10) / 5 
+10 + (10 / 5) 
+
 2^4
 
 2**4
 
 sqrt(9)
-
 
 sin(pi / 2)
 
@@ -48,7 +92,7 @@ week_bf
 week_Bf
 
 
-# structure of functions 
+# structure of functions
 function_name(arg1 = val1, arg2 = val2, ...)
 
 # example 1
@@ -68,15 +112,17 @@ seq(1, 10, 0.5)
 
 
 
-# character
+# demonstrate character or as they often called: strings
 "hello"
 
 # must be pairs of "
 
 # same with (
+print("hello")
+print("hello"
 
-
-
+# note the "+" in the console
+)
 
 
 # Vectors  ---------------------------
@@ -93,10 +139,19 @@ length(character_vector)
 
 logical_vector <- c(TRUE, FALSE, FALSE, TRUE)
 logical_vector2 <- c(T, F, T, F, F, T)
-logical_vector3 <- is.na(character_vector)
-logical_vector4 <- c(2 == 3, 4 != 4, 2 * 2 == 4)
-logical_vector3
 
+
+# introducing logical operators &, |, !, ==, !=, <, >, <=, >=
+1 < 2
+2 == 3
+2 != 3
+
+# see https://www.statmethods.net/management/operators.html for examples 
+
+
+logical_vector3 <- c(2 == 3, 4 != 4, 2 * 2 == 4)
+logical_vector4 <- is.na(character_vector)
+logical_vector4
 class(logical_vector)
 
 double_vector <- c(0.25, 0.123, 5.838238323232)
@@ -104,11 +159,13 @@ class(double_vector)
 
 
 integer_vector <- c(1L, 5L, 7L)
-numeric_vector <- c(1, 5, 7)
+numeric_vector <- c(1, 0, 7)
+numeric_vector2 <- c(1.23, 4.56)
 
-class(integer_vector2)
+class(integer_vector)
 class(numeric_vector)
-
+class(numeric_vector2)
+typeof(numeric_vector)
 
 a_list <- list(logical_vector2, character_vector, numeric_vector)
 class(a_list)
@@ -154,9 +211,9 @@ v1 + v4
 
 # example 4
 v5 <- c(1:3)
-length(v4)
+length(v5)
 
-v1 + v4
+v1 + v5
 
 
 
@@ -228,5 +285,26 @@ a_list_named$a
 
 # Dataframes and Tibbles ---------------------------
 
+df <- data.frame(
+  age = c(10, 12, 11),
+  name = c("Paul", "Jack", "Julia"),
+  passed = c(TRUE, FALSE, TRUE)
+)
+df
 
+rownames(df)
+rownames(df) <- c("A001", "B002", "B003")
+df
 
+tb <-  tibble(
+  age = c(10, 12, 11),
+  name = c("Paul", "Jack", "Julia"),
+  passed = c(TRUE, FALSE, TRUE)
+)
+
+tb
+
+rownames(tb)
+rownames(tb) <- c("A001", "B002", "B003")
+tb
+rownames(tb)
