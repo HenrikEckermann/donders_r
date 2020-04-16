@@ -1,6 +1,6 @@
 --- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
+title: "DondeRs Group"
+author: "Henrik Eckermann"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -9,28 +9,56 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "This bookdown-project contains introductory material to learn the R programming language"
 ---
 
-# Prerequisites
+# Overview
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+This minmal website contains information about the R course-sessions we will organize such as:  
 
-The **bookdown** package can be installed from CRAN or Github:
+- links to books and introductory material
+- homeworks (followed by solutions) 
 
-```{r eval=FALSE}
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
+It will be updated regularly and I will point to updates in the course lectures! 
 
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+**Instructor:**  
+My name is Henrik. I am a PhD-candidate in the Developmental Psychobiology lab group at the Donders Institute in Nijmegen. I find that the R programming language is an extremely useful tool for Scientists, especially (but not only) for data analysis and visualization. I can help you learning the basics of the R programming language and how to approach learning a programming language so you can advance in learning whatever is needed in your specific field. 
 
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
 
-```{r include=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
-  .packages(), 'bookdown', 'knitr', 'rmarkdown'
-), 'packages.bib')
-```
+**Target audience:**  
+Anyone at Donders Institute who would like to get started with the R programming language.  
+
+**Learning goals:**  
+Students will become familiar with the basics of the R programming language and the [tidyverse style](https://style.tidyverse.org/) of R programming. The goal is that students will feel empowered to acquire any R skill that they need for their specific work.
+
+**How to make optimal use of this course:**  
+Researchers are often highly variable in their understanding and knowledge of a particular programming language independent of their degree. To avoid wasting your time, check if the topic of a particular R meeting is useful for you. This course is meant for beginners who need guidance and who prefer learning a programming language in a group rather than by themselves. 
+
+
+
+## Preparing for the course
+
+
+### Software setup
+
+
+Follow the below steps before the course:
+
+1. Install/Update R: [Download](https://cran.r-project.org) and install the newest R version. 
+2. Install/Update Rstudio: [Click here](https://www.rstudio.com/products/rstudio/download/) and choose "Rstudio Desktop" (Open Source License) to download the newest version of Rstudio. 
+
+
+### Ressources 
+
+1. [Tidyverse coding style](https://style.tidyverse.org/index.html)
+
+2. [Data Analysis and Visualization in R for Ecologists](https://datacarpentry.org/R-ecology-lesson/) by Data Carpentry 
+
+
+
+## Contact  
+Contact me via [email](mailto:henrikeckermann87@gmail.com) for questions or feedback.
+
+
+
+

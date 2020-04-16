@@ -1,0 +1,34 @@
+
+# Goal 
+
+- easier to read & understand code
+
+
+```{r}
+# if you load any package of the tidyverse, the pipe operator becomes 
+# available. To load it specifically, load the package magrittr.
+library(tidyverse)
+
+# lets say we want to compute the log of the squareroot of x and 
+# then round x. 
+x<- c(2, 4, 10, 3, 5, 20, 6)
+
+# you can write either
+x_log_sqrt_rn1 <- round(log(sqrt(x)), 2)
+
+# or you can write
+x_sqrt <- sqrt(x)
+x_log_sqrt <- log(x_sqrt)
+x_log_sqrt_rn2 <- round(x_log_sqrt, 2)
+x_log_sqrt_rn2
+
+
+# or using the pipe you can write 
+x_log_sqrt_rn3 <- x %>% sqrt() %>%
+  log() %>%
+  round(2)
+```
+
+
+
+# [Repitition](https://www.datacamp.com/community/tutorials/pipe-r-tutorial)

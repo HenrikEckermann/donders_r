@@ -1,0 +1,7 @@
+Create functions that take a vector as input and returns:  
+- The last value. Should you use [ or [[?
+- The elements at even numbered positions.
+- Every element except the last value.
+- Only even numbers (and no missing values).
+
+What does mean(is.na(x)) tell you about a vector x?

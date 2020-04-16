@@ -1,0 +1,26 @@
+# Structure of the course {#structure}
+
+Check which questions we cover per session. One session is meant to consist of maximal 1 hour lecture (depending on the topic also less) as well as a homework that takes about 1 hour to complete.
+
+**Session 1: Before you learn the language** 
+
+- Why learning R
+- How to use R as a beginner
+- Types of R files
+- Ensuring reproducibility
+- How to learn the language
+
+ 
+
+
+**Session 2: Introduction to R**  
+
+- objects in R
+- functions and their arguments
+- data types
+  - atomic vectors 
+  - lists 
+  - dataframes/tibbles 
+- subsetting different datatypes
+
+

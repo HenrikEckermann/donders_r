@@ -1,0 +1,42 @@
+theme : template
+theme-background : [ "#FFF" ]
+theme-headline   : [ "Oswald", "#000000", "none" ]
+theme-byline     : [ "Lato", "#111111", "none" ]
+theme-text       : [ "Lato", "#1C1C1C", "none" ]
+theme-links      : [ "#5289F7", "#5254F7" ]
+theme-code       : [ "Source Code Pro" ]
+theme-controls   : [ "#484848" ]
+theme-margins    : [ "0", "15px" ]
+
+theme-override : assets/css/PITCHME.css
+
+highlight        : tomorrow
+
+logo : assets/img/donders.png
+logo-position : top-right
+
+layout : center
+
+footnote : "DondeRs"
+title : "R Sessions"
+
+
+published : true
+description : ""
+thumbnail : https://gitpitch.com/gpimg/tutorial-thumb.png
+
+# PITCHME-DOT-YAML-SETTINGS-THEME-BUILDER-GENERATED-START
+# theme            : template
+# theme-background : [ "#172A3B" ]
+# theme-headline   : [ "Oswald", "#A6AFE3", "none", "#FFFFFF", "100", "120", "15" ]
+# theme-byline     : [ "Lato", "#FFFFFF", "none", "#A6AFE3", "100", "110", "15" ]
+# theme-text       : [ "Lato", "#FFFFFF", "none", "#F9F871", "100", "100", "15" ]
+# theme-links      : [ "#5289F7", "#5254F7" ]
+# theme-code       : [ "Source Code Pro", "100", "120" ]
+# highlight        : tomorrow
+# theme-controls   : [ "" ]
+# theme-margins    : [ "0", "15px" ]
+# logo             : assets/img/donders.png
+# logo-position    : top-right
+# layout           : center
+# PITCHME-DOT-YAML-SETTINGS-THEME-BUILDER-GENERATED-END

@@ -1,0 +1,78 @@
+/* Modifications by gitpitch start here. */
+
+.snap-pad-top {
+  padding-top: 1.5em !important;
+}
+
+.snap-pad-bottom {
+  padding-bottom: 1.5em !important;
+}
+
+.snap-pad-bottom-right {
+  padding-bottom: 1.5em !important;
+  padding-right: 3em !important;
+}
+
+#gp-logo img {
+  max-height: 5em;
+}
+
+.second-logo-sized img {
+  max-height: 1.5em;
+}
+
+/* Modifications by gitpitch end here. */
+
+
+
+.reveal img.border-img {
+  background: none;
+  border: 1;
+  box-shadow: 1;
+}
+
+.reveal img.clean-img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal img.add-border-img {
+  background: none;
+  border: 1;
+  box-shadow: none;
+}
+
+.reveal img.clip-img {
+  clip-path: circle(30% at 50% 50%);
+  -webkit-clip-path: circle(30% at 50% 50%);
+}
+
+
+
+
+/* Donders Stuff */
+
+
+/* .bg-donders-one  { background: #FFFF00 !important; }
+.bg-donders-two  { background: #FFBE00 !important; }
+.bg-donders-three { background: #FF7D00 !important; }
+.bg-donders-four { background: #FF0000 !important; }
+.bg-donders-five  { background: #BE311A !important; }
+.bg-donders-six  { background: #8E0000 !important; }
+.bg-donders-seven  { background: #000000 !important; } */
+
+
+.bg-donders-one  { background: #fdd49e !important; }
+.bg-donders-two  { background: #fdbb84 !important; }
+.bg-donders-three { background: #fc8d59 !important; }
+.bg-donders-four { background: #ef6548 !important; }
+.bg-donders-five  { background: #d7301f !important; }
+.bg-donders-six  { background: #b30000 !important; }
+.bg-donders-seven  { background: #7f0000 !important; }
+
+.dtext { 
+  color: #b30000;
+  !important; 
+}
+
