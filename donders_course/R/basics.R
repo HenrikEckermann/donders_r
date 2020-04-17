@@ -32,6 +32,7 @@ list.files(path1)
 # USE RELATIVE PATHS, e.g. this path will work on everyones computer who opened 
 # the rProject file with e.g. RStudio:
 
+
 path2 <- "R"
 list.files(path2)
 
@@ -50,7 +51,8 @@ list.files(path3)
 
 # In general, load packages in the beginning of a script:
 library(tidyverse)
-library(here)
+
+
 
 # Avoid functions to install packages such as
 # install.packages("tidyverse") 
@@ -119,10 +121,10 @@ seq(1, 10, 0.5)
 
 # same with (
 print("hello")
-print("hello"
 
-# note the "+" in the console
-)
+
+# note the "+" in the console if you excute above print without ")"
+
 
 
 # Vectors  ---------------------------
@@ -132,6 +134,8 @@ print("hello"
 # 2. length(vector)
 
 character_vector <- c("this", "is", "a", "character", "vector", NA)
+
+
 class(character_vector)
 typeof(character_vector)
 length(character_vector)
@@ -146,19 +150,25 @@ logical_vector2 <- c(T, F, T, F, F, T)
 2 == 3
 2 != 3
 
+2 == 2 | 1 == 2
+
 # see https://www.statmethods.net/management/operators.html for examples 
 
-
 logical_vector3 <- c(2 == 3, 4 != 4, 2 * 2 == 4)
+logical_vector3
+
 logical_vector4 <- is.na(character_vector)
 logical_vector4
 class(logical_vector)
+
+
+
 
 double_vector <- c(0.25, 0.123, 5.838238323232)
 class(double_vector)
 
 
-integer_vector <- c(1L, 5L, 7L)
+integer_vector <- c(1L, 0L, 7L)
 numeric_vector <- c(1, 0, 7)
 numeric_vector2 <- c(1.23, 4.56)
 
@@ -166,6 +176,7 @@ class(integer_vector)
 class(numeric_vector)
 class(numeric_vector2)
 typeof(numeric_vector)
+
 
 a_list <- list(logical_vector2, character_vector, numeric_vector)
 class(a_list)
@@ -175,7 +186,9 @@ a_list
 
 # explicit coercion of vectors
 as.numeric(logical_vector)
-as.logical(numeric_vector) # never used this
+
+as.logical(numeric_vector) 
+
 as.numeric(character_vector)
 as.character(numeric_vector)
 
@@ -189,6 +202,7 @@ sum(logical_vector)  # ... to calculate the sum of TRUE
 # behavior of vectors
 
 # example 1
+
 v1 <- 1:10 
 v2 <- 10:19
 length(v1)

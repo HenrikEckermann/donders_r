@@ -25,3 +25,9 @@ Check which questions we cover per session. One session is meant to consist of m
 - subsetting vectors
 
 
+**Session 3: Import data and how to work with dataframes**  
+
+- what are dataframes 
+- how to create dataframes 
+- how to import data 
+- Selecting and filtering your data 

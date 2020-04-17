@@ -207,14 +207,57 @@ The chief difference between atomic vectors and lists is that atomic vectors are
 
 +++
 
+
+
+@snap[north]
+Homework 
+@snapend
+
+@snap[mid text-center text-05]
+1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
+2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/donders_course/R/basics.R) and try to understand the content.
+3. Then, create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
+4. Create a list that contains all the vectors.
+5. Take one of the vectors and select:
+   - the last element
+   - all except the first element
+6. Then take the list and select:
+   - the first element as a list 
+   - the second element of the third element in the list.
+@snapend
+
+
+
+
+
+---
+
+@snap[mid]
+#### Session 3
+
+
+
+@snap[mid dtext text-07]
+Import data and how to work with dataframes
+@snapend
+
+Note:
+
+
+
++++ 
+
 @snap[west span-45 text-center]
 #### What are data frames?
 @snapend
 
 @snap[east span-45 text-center text-07]
 - THE data structure for most tabular data
+- row and columns
 - columns are vectors of the same length
 @snapend
+
+
 
 
 
@@ -231,17 +274,3 @@ A data frame is the representation of data in the format of a table where the co
 
 
 +++ 
-
-@snap[north]
-Homework 
-@snapend
-
-@snap[mid text-center text-05]
-1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
-2. Create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
-3. Create a dataframe/tibble out of these vectors using either the tibble or the dataframe function.
-4. Take one of the vectors and select:
-   - the last element
-   - all except the first element
-@snapend
-
