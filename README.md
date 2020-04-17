@@ -1,1 +1,1 @@
-Minimal website to support R sessions at the Donders Institute in Nijmegen. Create your own using "[bookdown](https://bookdown.org/yihui/bookdown/get-started.html)"
+Minimal website to support R sessions at the Donders Institute in Nijmegen. This website was created using [bookdown](https://bookdown.org/yihui/bookdown/get-started.html).
