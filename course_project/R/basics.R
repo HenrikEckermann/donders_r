@@ -196,7 +196,7 @@ as.character(numeric_vector)
 mean(logical_vector) # this is useful to calculate percentage of TRUE/FALSE
 sum(logical_vector)  # ... to calculate the sum of TRUE
 
- 
+
 
 
 # behavior of vectors
@@ -294,31 +294,3 @@ a_list_named["a"]
 a_list_named[["a"]]
 # The $ sign is a shortcut to using [[]] for lists
 a_list_named$a 
-
-
-
-# Dataframes and Tibbles ---------------------------
-
-df <- data.frame(
-  age = c(10, 12, 11),
-  name = c("Paul", "Jack", "Julia"),
-  passed = c(TRUE, FALSE, TRUE)
-)
-df
-
-rownames(df)
-rownames(df) <- c("A001", "B002", "B003")
-df
-
-tb <-  tibble(
-  age = c(10, 12, 11),
-  name = c("Paul", "Jack", "Julia"),
-  passed = c(TRUE, FALSE, TRUE)
-)
-
-tb
-
-rownames(tb)
-rownames(tb) <- c("A001", "B002", "B003")
-tb
-rownames(tb)

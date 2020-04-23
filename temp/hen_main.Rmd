@@ -1,4 +1,0 @@
-
-# Key ideas I need to transfer 
-
-As a programmer in R or any other language: Once you understand the basic concepts of programming, you can find the solution to almost any problem already on the internet. If you ask me question, I might often respond that you look it up. I only know operations I do regularly out of my mind. Because you can find the solution to simple operations always within less than a minute. 

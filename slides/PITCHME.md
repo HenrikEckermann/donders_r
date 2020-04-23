@@ -243,6 +243,13 @@ Import data and how to work with dataframes
 
 Note:
 
+- what are dataframes 
+- how to create dataframes 
+- basic properties of dataframes 
+- how to import and export data 
+- Selecting and filtering your data 
+- the pipe operator %>%
+
 
 
 +++ 
@@ -255,6 +262,7 @@ Note:
 - THE data structure for most tabular data
 - row and columns
 - columns are vectors of the same length
+- basically a list with named vectors of the same length
 @snapend
 
 
@@ -271,6 +279,55 @@ A data frame is the representation of data in the format of a table where the co
 
 
 
-
-
 +++ 
+
+#### Create dataframes 
+
++++
+
+#### Inspect key properties of dataframes
+
++++
+
+#### Subsetting of dataframes 
+
++++
+
+#### Import data 
+
++++
+
+#### Export data 
+
++++
+
+#### Dplyr Basics
+
+
++++
+
+#### The Pipe Operator
+
+
++++
+
+@snap[north]
+Homework 
+@snapend
+
+@snap[mid text-center text-05]
+1. Go through the script, read the comments and understand the code.
+2. Create a new R file in your project and import your own data in R as a dataframe. 
+3. How many rows and columns does your dataframe have?
+4. What are the datatypes of the vectors within your dataframe?
+5. Create another new R file called dataframes.R. Open it. In R, there is a preloaded dataframe called "mtcars". Using only the methods we learned today, try to perform the following actions:
+   - Take a look at the first 10 rows and last 10 rows
+   - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders)
+   - if you did not already: answer the same question but use the %>% operator to get to your answer!
+   - How many observations are in this new dataframe?
+   - export that file to an excel file in your data folder
+
+@snapend
+
+
+
