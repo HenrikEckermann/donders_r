@@ -13,11 +13,16 @@ df <- data.frame(
   passed = c(TRUE, FALSE, FALSE, TRUE)
 )
 
+
 tbl_df <- tibble(
   age = c(10, 12, 11, 9),
   name = c("Lilly", "Paul", "Jack", "Julia"),
   passed = c(TRUE, FALSE, FALSE, TRUE)
 )
+
+class(df)
+class(tbl_df)
+tbl_df <- as.data.frame(tbl_df)
 
 
 
@@ -30,10 +35,13 @@ str(df)
 
 # to see the column names:
 colnames(df)
+# colnames(df) <- c("1", "2", "3")
 
 
 # to see rownames
 rownames(df)
+
+
 # also very important: the dimensions of a dataframe: rows and columns
 dim(df)
 
@@ -61,17 +69,21 @@ df[2:3, 1:2]
 df[, 1]
 df[2, c(1, 3)]
 
-
+df
 
 # you need to understand and memorize the above because it is frequently used
 # However, the tidyverse style of viewwing and manipulating a dataframe is 
 # using the select and filter functions. See some basic examples:
 
+
+# columns 
 select(df, age)
 select(df, age, passed)
 
 select(df, -age)
 
+
+# rows 
 filter(df, passed == TRUE)
 filter(df, name == "Julia")
 filter(df, passed == TRUE, age < 12)
@@ -92,14 +104,21 @@ filter(df, passed == TRUE & age < 12)
 
 
 
+
 # csv files (difference between read_csv and read_csv2)
 file <- "data/childcare.csv"
+
+
+
 childcare <- read_csv(file)
+
 
 # excel files 
 file <- "data/childcare.xlsx"
+
 childcare <- readxl::read_excel(file)
-  
+
+
 
 
 # SPSS files
@@ -136,8 +155,6 @@ writexl::write_xlsx(df, path = "data/exported_df.xlsx")
 
 
 
-
-
 #####################################################################
 ##########      Dyplr Basics: Manipulate dataframes basics  #########
 #####################################################################
@@ -145,7 +162,7 @@ writexl::write_xlsx(df, path = "data/exported_df.xlsx")
 
 # let's inspect the first 10 rows and the last 10 rows before we start 
 # manipulating the dataframe using dplyr functions.
-head(childcare)
+head(childcare, 3)
 tail(childcare)
 
 # The following functions are part of the dplyr package (tidyverse) and  work
@@ -161,7 +178,7 @@ tail(childcare)
 select(childcare, id, age_d)
 select(childcare, -age_d)
 select(childcare, id, starts_with("s_"))
-select(childcare, id, ends_with("n"))
+select(childcare, ends_with("n"), id)
 select(childcare, id, contains("shannon"))
 
 
@@ -170,11 +187,14 @@ select(childcare, id, contains("shannon"))
 # the filter function always check is a condition is TRUE for any value of the
 # column you give 
 
+
+
 # e.g. show all rows that have missing values in bf_ratio
 filter(childcare, is.na(bf_ratio))
 
 # or all that are older than 90 days and where csection equals to 1
 filter(childcare, age_d > 90 & csection == 1)
+
 
 # # a bit more advanced is to filter through all columns to search for NA
 # filter_all(childcare, any_vars(is.na(.)))
@@ -204,6 +224,8 @@ arrange(childcare, desc(age_d))
 
 # e.g.
 
+
+
 head(childcare, 3)
 
 # can be written as
@@ -218,8 +240,8 @@ childcare_renamed <- rename(childcare_selected, subject_id = id)
 childcare_renamed
 
 # we can write:
-childcare_renamed <- childcare %>% 
-  filter(time == "pre", csection == 1) %>%
+childcare_renamed <- childcare %>%  
+  filter(time == "pre", csection == 1) %>% 
   select(id, shannon) %>%
   rename(subject_id = id)
 
@@ -250,27 +272,3 @@ gender_female
 
 # Next week we cover somewhat more complicated operations such as
 # manipulating variables or creating new variables from exisint ones.
-
-
-# add new variable or change existing ones with mutate 
-
-
-
-# change between long and wide format:
-
-# lets say we wanted to have the variables xxx.length/width as categories
-pivot
-
-# for more complicated use cases see also the following link: 
-# https://tidyr.tidyverse.org/dev/articles/pivot.html
-
-
-# childcare <- mutate(childcare, birthweight = round(birthweight, 2), age_d = round(age_d), bf_ratio = round(bf_ratio, 2), shannon = round(shannon, 2))
-# 
-# childcare <- mutate(childcare, s_age_d = scale(age_d)[, 1], s_birthweight = scale(birthweight)[, 1], s_shannon = scale(shannon)[, 1])
-# childcare
-# 
-# writexl::write_xlsx(childcare, "data/childcare.xlsx")
-# write_csv(childcare, "data/childcare.csv")
-
-

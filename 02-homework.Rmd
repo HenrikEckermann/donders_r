@@ -36,6 +36,15 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
 
 **Session 3: Working with dataframes**  
 
-1. Create a dataframe/tibble out of 3 vectors using either the tibble or the dataframe function.
+1. Go through the [script](https://github.com/HenrikEckermann/donders_r/raw/master/course_project/R/dataframes_and_import_data.R), read the comments and understand the code.
+2. Create a new R file in your project and import your own data in R as a dataframe. 
+3. How many rows and columns does your dataframe have?
+4. What are the datatypes of the vectors within your dataframe?
+5. Create another new R file called dataframes.R. Open it. In R, there is a preloaded dataframe called "mtcars". Using only the methods we learned today, try to perform the following actions:
+   - Take a look at the first 10 rows and last 10 rows
+   - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders)
+   - if you did not already: answer the same question but use the %>% operator to get to your answer!
+   - How many observations are in this new dataframe?
+   - export that dataframe to an excel file in your data folder
 
 
