@@ -35,7 +35,7 @@ str(df)
 
 # to see the column names:
 colnames(df)
-# colnames(df) <- c("1", "2", "3")
+# colnames(df) <- c("A", "B", "C")
 
 
 # to see rownames
@@ -75,6 +75,8 @@ df
 # However, the tidyverse style of viewwing and manipulating a dataframe is 
 # using the select and filter functions. See some basic examples:
 
+
+# 2 dyplr functions
 
 # columns 
 select(df, age)
@@ -140,7 +142,7 @@ childcare <- readxl::read_excel(file)
 
 
 # As we cover the basics of data import, we also want to take a quick look 
-# at exporting data as it follow the same logic:
+# at exporting data as it follows the same logic:
 
 
 
@@ -184,7 +186,7 @@ select(childcare, id, contains("shannon"))
 
 
 
-# the filter function always check is a condition is TRUE for any value of the
+# the filter function always checks if a condition is TRUE for any value of the
 # column you give 
 
 
@@ -200,7 +202,7 @@ filter(childcare, age_d > 90 & csection == 1)
 # filter_all(childcare, any_vars(is.na(.)))
 # 
 # # or to filter only at specified columns
-# filter_at(childcare, vars(bf_ratio, ), ~ is.na(.))
+# filter_at(childcare, vars(bf_ratio, csection), ~ is.na(.))
 
 
 
@@ -208,7 +210,7 @@ filter(childcare, age_d > 90 & csection == 1)
 
 childcare
 
-# order by chilcare vs not and then by age
+# order by csection vs not and then by age
 arrange(childcare, csection, age_d)
 
 # descending order
@@ -224,8 +226,6 @@ arrange(childcare, desc(age_d))
 
 # e.g.
 
-
-
 head(childcare, 3)
 
 # can be written as
@@ -233,6 +233,7 @@ head(childcare, 3)
 childcare %>% head(3)
 
 # beneficial if you have many operations that follow one another:
+
 # instead of writing:
 childcare_filtered <- filter(childcare, time == "pre", csection == 1)
 childcare_selected <- select(childcare_filtered, id, shannon)
@@ -271,4 +272,4 @@ gender_female
 
 
 # Next week we cover somewhat more complicated operations such as
-# manipulating variables or creating new variables from exisint ones.
+# manipulating variables or creating new variables from existing ones.

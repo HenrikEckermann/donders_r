@@ -42,7 +42,7 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
 4. What are the datatypes of the vectors within your dataframe?
 5. Create another new R file called dataframes.R. Open it. In R, there is a preloaded dataframe called "mtcars". Using only the methods we learned today, try to perform the following actions:
    - Take a look at the first 10 rows and last 10 rows
-   - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders)
+   - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders). First use the base R method using the brackets. Then use dplyr functions to achieve the same!
    - if you did not already: answer the same question but use the %>% operator to get to your answer!
    - How many observations are in this new dataframe?
    - export that dataframe to an excel file in your data folder
