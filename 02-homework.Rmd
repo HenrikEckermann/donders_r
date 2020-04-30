@@ -48,3 +48,8 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
    - export that dataframe to an excel file in your data folder
 
 
+**Session 4: Data manipulation, functions and conditional execution**  
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.  
+2. Structure and manipulate your own data as far as you can. Also obtain useful summary statistics of your own data by making use of group_by and summarise functions.  
+3. Write a function that takes as arguments two numeric vectors and returns a named list that shows the Pearson as well as the Spearman correlation of these vectors.  
+4. Now rewrite this function by giving it another argument (linear = FALSE). Write the function so that it returns Pearson correlation when linear == TRUE and otherwise Spearman correlation.

@@ -5,60 +5,13 @@ childcare <- read_csv("data/childcare.csv")
 
 
 
-#####################################################################
-##########               Homework session 3                ##########
-#####################################################################
-
-
-
-# 5. Create another new R file called dataframes.R. Open it. In R, there is a preloaded dataframe called "mtcars". Using only the methods we learned today, try to perform the following actions:
-#    - Take a look at the first 10 rows and last 10 rows
-
-head(mtcars)
-
-tail(mtcars)
-
-
-# - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders). First use the base R method using the brackets. Then use dplyr functions to achieve the same!
-
-# base R
-df <- mtcars[mtcars$cyl == 6, c("mpg", "disp", "hp")]
-
-# dyplyr 
-df <- mtcars %>%
-  filter(cyl == 6) %>%
-  select(mpg, disp, hp)
-
-# Note that the rownames are gone because the use of rownames in tidyverse 
-# is deprecated. You can use rownames_to_column("name_of_column")
-# e.g. 
-
-dfr <- mtcars %>% 
-  rownames_to_column("car") %>%
-  filter(cyl == 6) %>%
-  select(car, mpg, disp, hp)
-
-
-# - How many observations are in this new dataframe?
-dim(df)
-df
-
-# - export that file to an excel file in your data folder
-writexl::write_xlsx(df, path = "data/select_cars.xlsx")
-
-
-
-
-
-
-
 
 #####################################################################
-##########               Data manipulation                 ##########
+##########                      Mutate                     ##########
 #####################################################################
 
 # add new variables that are functions of exising ones with mutate 
-childcare
+childcare %>% head()
 
 # the mutate function always adds a new variables to your dataframe 
 mutate(childcare, bf_perc = bf_ratio * 100) %>%
@@ -69,45 +22,49 @@ mutate(childcare, bf_perc = bf_ratio * 100) %>%
 mutate(childcare, birthweight = round(birthweight)) %>%
   head()
   
-childcare
 # or you can use transmute if you only want to keep the new variables:
 childcare_s <- transmute(
   childcare, 
-  age_d_s = (age_d - mean(age_d, na.rm = T)) / sd(age_d, na.rm = T),
-  shannon_s = scale(shannon)[, 1],
+  age_d_s = (age_d - mean(age_d, na.rm = TRUE)) / sd(age_d, na.rm = TRUE), 
+  shannon_s = scale(shannon)[, 1], 
   birthweight_s = scale(birthweight)[, 1]
 )
 
+
+
 # Show why we have to use the [, 1]
-scale(childcare$birthweight)
-  
-  
+scale(childcare$birthweight) %>% class()
 
 
 
-# There are many functions for creating new variables that you can use with mutate(). The key property is that the function must must take a vector of values as input, return a vector with the same number of values as output.
+# There are many functions for creating new variables that you can use with
+# mutate(). The key property is that the function must must take a vector of
+# values as input and return a vector with the same number of values as output.
 
 
-
+#####################################################################
+##########               summarise                         ##########
+#####################################################################
 
 
 
 # Grouped summaries with summarise()
-# summarise() collapses a dataframe to a single row:
+# summarise() summarises a variable of choice according to functions of choice:
 
-summarise(
+summary_df <- summarise(
   childcare, 
   mean_birthweight = mean(birthweight, na.rm = TRUE),
   sd_birthweight = sd(birthweight, na.rm = TRUE),
   n = n()
 )
 
+summary_df
 
 # This summary function is much more useful if you pair it with the group_by
 # function!
 
-childcare
 
+# we can create summaries for subgroups:
 childcare %>% group_by(csection) %>%
   summarise(
     mean_birthweight = mean(birthweight, na.rm = TRUE),
@@ -115,7 +72,7 @@ childcare %>% group_by(csection) %>%
     n = n()
   )
   
-  
+# and also for multiple groups, e.g. here are 4 subgroups
 childcare %>% group_by(csection, sibling) %>%
   summarise(
     mean_birthweight = mean(birthweight, na.rm = TRUE),
@@ -124,6 +81,7 @@ childcare %>% group_by(csection, sibling) %>%
   )
   
 
+# some examples how these functions can be used:
 
 # How many distinct ages are there?
 childcare %>% summarise(n = n(), n_dis_age = n_distinct(age_d))
@@ -131,16 +89,16 @@ childcare %>% summarise(n = n(), n_dis_age = n_distinct(age_d))
 # how many non missing values in birthweight ?
 childcare %>% summarise(n = n(), n_birthweight = sum(!is.na(birthweight)))
 
+# google dplyr summary functions for more possibilities and try to understand 
+# the common principles of all these functions!
+
 
 # there is a shortcut to group_by() %>% summarise(n = n())
 childcare %>% count(csection)
 
-# the same function can be uses to sum a "weight" variable instead of just 
-# counting 
-head(childcare)
-childcare %>% count(csection, wt = age_d)
 
-# Remember from the first lecture that logical values are great 
+
+# Remember from the first lecture that logical values are suitable
 # to count or summarise:
 childcare %>% group_by(sibling) %>% 
   summarise(
@@ -160,8 +118,7 @@ childcare %>%
   filter(rank(age_d, ties.method = "average") <= 2)
 
 
-
-# standardize per group 
+# ... or standardize per group instead of all values combined
 childcare %>% group_by(sex) %>%
   mutate(s_persex_birthweight = scale(birthweight)[, 1])
   
@@ -176,6 +133,15 @@ childcare %>% group_by(sex) %>%
 # see e.g. https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html
 # for repetition and also google other dplyr possibilities of interest 
 
+# For many of these operations, there are already functions (even in base R but 
+# especially in other packages). E.g.
+summary(childcare)
+
+# However, you probabaly want to be able to create your own specific statistic
+# of interest and also for the specific groups of your interest. Once you learn 
+# dplyr functions you will get very flexible in manipulating and summarising
+# your data!
+
 
 
 
@@ -189,9 +155,10 @@ childcare %>% group_by(sex) %>%
 
 # structure of functions 
 function_name <- function(argument1, argument2) {
+  
   # this is the body of a function
   
-  # return something using return() 
+  # return the output using return() 
 }
 
 
@@ -211,7 +178,8 @@ coef_table <- lm_fit %>%
   as.data.frame() %>%
   rownames_to_column("Coefficient") %>%
   mutate_if(is.numeric, round, 2)
-  
+
+coef_table
   
 # you can write a function:
 
@@ -229,9 +197,34 @@ coefs <- function(model) {
 
 # and then write 
 
-coefs(model)
+coefs(model = lm_fit)
+
+
+
+
+# an even simpler example: standardize
+x <- c(1, 2, 3, 4)
+
+# to standardize we write: 
+(x - mean(x)) / sd(x)
+
+# assuming there was no scale function in R we could create one:
+standardize <- function(x) {
+  x_s <- (x - mean(x)) / sd(x)
+  return(x_s)
+}
+
+standardize(x)
+
+
+
+
+
+
+
+
   
-# this function can easily be extended like this:
+# the coef function can easily be extended like this:
 
 summarise_regression <- function(data, formula) {
   # fit model
@@ -258,6 +251,7 @@ condition <- FALSE
 if (condition) print("Hi") else print("Bye")
 
 
+
 if (!TRUE) print("Hi") else if (!!FALSE) print("Bye") else print("Ciao")
 
 # To make this more readable we use curly brackets"
@@ -269,15 +263,16 @@ if (condition) {
   x <- x - 2
 }
 
+
+
 # for if statements use && and || instead of & and | because 
 # the latter are vectorized 
 
-if (TRUE && TRUE) print("hi")
 
-# if always take a value of length 1, otherwise you get a warning:
+# "if" always take a value of length 1, otherwise you get a warning:
 
 if(c(TRUE, FALSE)) print("hi")
-# we can use ifelse for that 
+# we can use ifelse for vectors
 ifelse(c(TRUE, FALSE, TRUE, TRUE, FALSE), "hi", "ciao")
 
 
@@ -286,11 +281,14 @@ ifelse(c(TRUE, FALSE, TRUE, TRUE, FALSE), "hi", "ciao")
 # example 1
 childcare %>%
   mutate(groups = ifelse(csection & sibling, 1, 2)) %>%
-  select(id, csection, sibling, groups)
+  select(id, csection, sibling, groups) %>%
+  tail(20)
 
 # example 2
 mtcars %>%
-  mutate_if(is.numeric, function(var) var * 2)
+  mutate_if(is.numeric, function(var) var * 2) 
+
+
 
 # read more about mutate_if, mutate_all with custom functions at 
 # https://dplyr.tidyverse.org/reference/mutate_all.html

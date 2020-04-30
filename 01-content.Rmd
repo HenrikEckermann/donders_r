@@ -33,3 +33,12 @@ Check which questions we cover per session. One session is meant to consist of m
 - how to import and export data 
 - Selecting and filtering your data 
 - the pipe operator %>%
+
+
+**Session 4: Data transformation, data summary, functions and conditional execution**   
+
+- mutate 
+- summarise 
+- group_by 
+- write your own functions 
+- use if/else statements
