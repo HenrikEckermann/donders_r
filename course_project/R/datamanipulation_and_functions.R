@@ -7,7 +7,7 @@ childcare <- read_csv("data/childcare.csv")
 
 
 #####################################################################
-##########                      Mutate                     ##########
+##########                      mutate                     ##########
 #####################################################################
 
 # add new variables that are functions of exising ones with mutate 
