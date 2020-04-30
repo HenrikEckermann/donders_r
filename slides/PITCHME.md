@@ -331,3 +331,166 @@ Homework
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- session 4 -->
+
+---
+
+@snap[mid]
+#### Session 4
+
+
+
+@snap[mid dtext text-07]
+1. Data transformation and summary
+2. Functions and control flow
+@snapend
+
+Note:
+
+- mutate 
+- group and summarise 
+- functions 
+- control flow
+
+
+
++++
+
+#### mutate
+
++++
+
+#### group_by and summarise
+
+
++++
+
+
+@snap[north text-center]
+### Write functions
+@snapend
+
+@snap[west span-45 text-center]
+#### Why & When
+@snapend
+
+@snap[east span-45 text-center text-07]
+- eliminate chances of mistakes
+- make code more structured/readable
+- copy/paste code block > 2
+- fix mistake in one place 
+- Do not repeat yourself!
+@snapend
+
+Note:
+
+Do not repeat yourself!
+
+
+
++++
+
+@snap[north text-center]
+### Write functions
+@snapend
+
+@snap[west span-45 text-center]
+#### 3 key steps
+@snapend
+
+@snap[east span-45 text-center text-07]
+1. Pick a name
+2. Determine the arguments
+3. Place your code in the body of the function {}
+@snapend
+
+Note:  
+1. short, clearly evokes what the function does (usually is a verb).
+2. 
+It is easier to first write the code that works and then make a function out of it than writing a function right away.
+
+
+
+
+
+
++++
+
+@snap[north text-center]
+### Conditional execution
+@snapend
+
+
+@snap[midpoint span-60]
+
+```r
+if (condition) {
+  # code executed when condition is TRUE
+} else {
+  # code executed when condition is FALSE
+}
+```
+
+@snapend
+
+
+Note:  
+Do not use | or & but || or && because the former are VECTORIZED operators.
+
+
+
++++
+
+@snap[north text-center]
+### Conditional execution
+@snapend
+
+
+@snap[midpoint span-60]
+
+```r
+if (this) {
+  # do that
+} else if (that) {
+  # do something else
+} else {
+  # 
+}
+```
+
+
++++
+
+
+
+@snap[north]
+Homework 
+@snapend
+
+@snap[mid text-center text-05]
+1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
+2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/donders_course/R/basics.R) and try to understand the content.
+3. Then, create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
+4. Create a list that contains all the vectors.
+5. Take one of the vectors and select:
+   - the last element
+   - all except the first element
+6. Then take the list and select:
+   - the first element as a list 
+   - the second element of the third element in the list.
+@snapend
