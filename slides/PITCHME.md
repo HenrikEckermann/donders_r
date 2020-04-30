@@ -144,7 +144,7 @@ Note:
 +++
 
 
-#### Homework 
+#### Homework session 1
 
 
 Note: 
@@ -210,7 +210,7 @@ The chief difference between atomic vectors and lists is that atomic vectors are
 
 
 @snap[north]
-Homework 
+Homework session 2
 @snapend
 
 @snap[mid text-center text-05]
@@ -312,7 +312,7 @@ A data frame is the representation of data in the format of a table where the co
 +++
 
 @snap[north]
-Homework 
+Homework session 3
 @snapend
 
 @snap[mid text-center text-05]
@@ -357,7 +357,8 @@ Homework
 
 @snap[mid dtext text-07]
 1. Data transformation and summary
-2. Functions and control flow
+2. Functions
+3. Control flow
 @snapend
 
 Note:
@@ -479,18 +480,12 @@ if (this) {
 
 
 @snap[north]
-Homework 
+Homework session 4
 @snapend
 
 @snap[mid text-center text-05]
-1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
-2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/donders_course/R/basics.R) and try to understand the content.
-3. Then, create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
-4. Create a list that contains all the vectors.
-5. Take one of the vectors and select:
-   - the last element
-   - all except the first element
-6. Then take the list and select:
-   - the first element as a list 
-   - the second element of the third element in the list.
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
+2. Structure and manipulate your own data as far as you can. Also obtain useful summary statistics of your own data by making use of group_by and summarise functions.
+3. Write a function that takes as arguments two numeric vectors and returns a named list that shows the Pearson as well as the Spearman correlation of these vectors.
+4. Now rewrite this function by giving it another argument (linear = FALSE). Write the function so that it returns Pearson correlation when linear == TRUE and otherwise Spearman correlation.
 @snapend

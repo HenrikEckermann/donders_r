@@ -1,11 +1,50 @@
 library(tidyverse)
 
-
-
-
 # load data 
 childcare <- read_csv("data/childcare.csv")
 
+
+
+#####################################################################
+##########               Homework session 3                ##########
+#####################################################################
+
+
+
+# 5. Create another new R file called dataframes.R. Open it. In R, there is a preloaded dataframe called "mtcars". Using only the methods we learned today, try to perform the following actions:
+#    - Take a look at the first 10 rows and last 10 rows
+
+head(mtcars)
+
+tail(mtcars)
+
+
+# - Create a new dataframe that only retains the columns mpg, disp and hp of cars that have 6 cylinders (cyl is the column for the number of cylinders). First use the base R method using the brackets. Then use dplyr functions to achieve the same!
+
+# base R
+df <- mtcars[mtcars$cyl == 6, c("mpg", "disp", "hp")]
+
+# dyplyr 
+df <- mtcars %>%
+  filter(cyl == 6) %>%
+  select(mpg, disp, hp)
+
+# Note that the rownames are gone because the use of rownames in tidyverse 
+# is deprecated. You can use rownames_to_column("name_of_column")
+# e.g. 
+
+dfr <- mtcars %>% 
+  rownames_to_column("car") %>%
+  filter(cyl == 6) %>%
+  select(car, mpg, disp, hp)
+
+
+# - How many observations are in this new dataframe?
+dim(df)
+df
+
+# - export that file to an excel file in your data folder
+writexl::write_xlsx(df, path = "data/select_cars.xlsx")
 
 
 
@@ -42,6 +81,8 @@ childcare_s <- transmute(
 # Show why we have to use the [, 1]
 scale(childcare$birthweight)
   
+  
+
 
 
 # There are many functions for creating new variables that you can use with mutate(). The key property is that the function must must take a vector of values as input, return a vector with the same number of values as output.
@@ -129,6 +170,13 @@ childcare %>% group_by(sex) %>%
   # ... %>%
   ungroup() %>%
   mutate(s_persex_birthweight = scale(birthweight)[, 1])
+  
+  
+  
+# see e.g. https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html
+# for repetition and also google other dplyr possibilities of interest 
+
+
 
 
 
@@ -195,6 +243,11 @@ summarise_regression <- function(data, formula) {
   # return list(model, assumptions summary (incl plots), apa table)
 }
 
+# we only covered the very basics of writing functions. For repetition or more 
+# content start e.g. here: https://www.tutorialspoint.com/r/r_functions.htm
+
+
+
 
 
 #####################################################################
@@ -228,26 +281,29 @@ if(c(TRUE, FALSE)) print("hi")
 ifelse(c(TRUE, FALSE, TRUE, TRUE, FALSE), "hi", "ciao")
 
 
-# this is very useful in combination witht the mutate function:
+# now we can use our new skills in combination with the mutate function:
 
+# example 1
 childcare %>%
   mutate(groups = ifelse(csection & sibling, 1, 2)) %>%
   select(id, csection, sibling, groups)
 
-# change between long and wide format:
+# example 2
+mtcars %>%
+  mutate_if(is.numeric, function(var) var * 2)
 
-# lets say we wanted to have the variables xxx.length/width as categories
+# read more about mutate_if, mutate_all with custom functions at 
+# https://dplyr.tidyverse.org/reference/mutate_all.html
 
 
-# for more complicated use cases see also the following link: 
-# https://tidyr.tidyverse.org/dev/articles/pivot.html
+# to read about control flow from another source see e.g.
+# https://data-flair.training/blogs/r-control-structures/
+
+# we will cover loops (for, while etc.) next week
 
 
-# childcare <- mutate(childcare, birthweight = round(birthweight, 2), age_d = round(age_d), bf_ratio = round(bf_ratio, 2), shannon = round(shannon, 2))
-# 
-# childcare <- mutate(childcare, s_age_d = scale(age_d)[, 1], s_birthweight = scale(birthweight)[, 1], s_shannon = scale(shannon)[, 1])
-# childcare
-# 
-# writexl::write_xlsx(childcare, "data/childcare.xlsx")
-# write_csv(childcare, "data/childcare.csv")
+
+
+
+
 
