@@ -13,6 +13,7 @@ library(tidyverse)
 
 
 
+
 head(gapminder)
 
 class(gapminder)
@@ -20,15 +21,16 @@ class(gapminder)
 # 1 Scatter plots (also called bivariate plots)
 # input: two numerical variables 
 head(childcare)
-basic_plot <- ggplot(data = childcare, mapping = aes(x = age_d, y = shannon)) +
+
+basic_plot <- ggplot(data = childcare, mapping = aes(x = csection, y = shannon)) +
   geom_point()
+
+class(basic_plot)
 
 
 # we can add another layer of geometric object. E.g. a regression line:
 basic_plot + 
   geom_smooth(method = "lm", formula = "y ~ x")
-
-
 
 
 
@@ -53,6 +55,7 @@ thoughts <- c("Corona", "No party", "No barbecue", "Only learning R")
 
 
 for (i in thoughts) {
+  # body
   print("I was thinking about...")
   print(i)
 }
@@ -87,17 +90,22 @@ head(mtcars)
 
 outcome <- "mpg"
 predictors <- colnames(mtcars)[colnames(mtcars) != "mpg"]
+length(predictors)
+predictors
 
 
 # create a list where we store the plots
 plots <- list()
-plots 
+
+
+
 # create and store the plots
 for (predictor in predictors) {
   p <- ggplot(data = mtcars, aes_string(x = predictor, y = outcome)) +
     geom_point() +
     geom_smooth(method = "lm")
   plots[[predictor]] <- p
+  
 }
 
 
@@ -105,7 +113,9 @@ for (predictor in predictors) {
 names(plots)
 length(plots)
 # e.g. 
-plots$disp
+class(plots)
+
+plots$drat
 
 
 
@@ -117,6 +127,7 @@ plots$disp
 
 
 # we need to first learn what seq_along() does. It does the same as:
+
 1:length(thoughts)
 # but seq_along is safer to use (the details are not important)
 seq_along(thoughts)
@@ -172,6 +183,8 @@ map(thoughts, function(x) {
 
 # or the short version of this 
 map(thoughts, ~.x)
+
+
 # the plot example:
 plots <- map(predictors, function(predictor) {
   ggplot(mtcars, aes_string(predictor, outcome)) +
@@ -179,15 +192,10 @@ plots <- map(predictors, function(predictor) {
    geom_smooth(method = "lm", formula = "y ~ x")
 })
 
-plots[[1]]
+plots[[2]]
 
 # start out by reading here if you want to master map:
 # https://purrr.tidyverse.org/
-
-
-
-
-
 
 
 

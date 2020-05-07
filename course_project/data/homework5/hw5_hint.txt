@@ -1,0 +1,5 @@
+1. store the names of the files in a character vector (hint: use list.files())
+2. Create an empty list.
+3. Iterate over the file names using a for loop or map.
+4. In the body, import the dataset as a dataframe and store it in the list.
+5. Use bind_rows() to bind all dataframes rowwise
