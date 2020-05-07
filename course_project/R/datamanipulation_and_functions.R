@@ -89,7 +89,7 @@ childcare %>% summarise(n = n(), n_dis_age = n_distinct(age_d))
 # how many non missing values in birthweight ?
 childcare %>% summarise(n = n(), n_birthweight = sum(!is.na(birthweight)))
 
-# google dplyr summary functions for more possibilities and try to understand 
+# google "dplyr summary functions" for more possibilities and try to understand 
 # the common principles of all these functions!
 
 
@@ -99,7 +99,7 @@ childcare %>% count(csection)
 
 
 # Remember from the first lecture that logical values are suitable
-# to count or summarise:
+# to count or summarise? Here is another example of that:
 childcare %>% group_by(sibling) %>% 
   summarise(
     older_than60d_count = sum(age_d > 70),
@@ -108,8 +108,8 @@ childcare %>% group_by(sibling) %>%
 
 
 # grouped mutates (and filters)
-# summarise is most useful with group_by but also mutate and filter make sense
-# using so called windows functions. See for many examples
+# summarise() is most useful with group_by() but also mutate and filter make
+# sense using so called windows functions. See for many examples
 # https://dplyr.tidyverse.org/articles/window-functions.html
 
 # e.g. find the 2 youngest children in each subgroup of sex * sibling
@@ -177,7 +177,7 @@ coef_table <- lm_fit %>%
   coef() %>%
   as.data.frame() %>%
   rownames_to_column("Coefficient") %>%
-  mutate_if(is.numeric, round, 2)
+  mutate_if(is.numeric, round, 3)
 
 coef_table
   
@@ -254,7 +254,7 @@ if (condition) print("Hi") else print("Bye")
 
 if (!TRUE) print("Hi") else if (!!FALSE) print("Bye") else print("Ciao")
 
-# To make this more readable we use curly brackets"
+# To make this more readable we use curly brackets {}
 
 x <- 2
 if (condition) {

@@ -14,13 +14,13 @@
 
 Create an rProject using Rstudio incl. a folder for your R code and your data.
 
- 
+
 
 
 **Session 2: Introduction to R**  
 
-1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
-2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/donders_course/R/basics.R) and try to understand the content.
+1. Read the intro of the [Tidyverse coding style guide](https://style.tidyverse.org/files.html). Read on during the course whenever in doubt what the correct style is.
+2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/course_project/R/basics.R) and try to understand the content.
 3. Then, create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
 4. Create a list that contains all the vectors.
 5. Take one of the vectors and select:
