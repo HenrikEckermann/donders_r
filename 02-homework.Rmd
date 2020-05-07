@@ -53,3 +53,9 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
 2. Structure and manipulate your own data as far as you can. Also obtain useful summary statistics of your own data by making use of group_by and summarise functions.  
 3. Write a function that takes as arguments two numeric vectors and returns a named list that shows the Pearson as well as the Spearman correlation of these vectors.  
 4. Now rewrite this function by giving it another argument (linear = FALSE). Write the function so that it returns Pearson correlation when linear == TRUE and otherwise Spearman correlation.
+
+
+**Session 5: ggplot2 basics and iteration**  
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
+2. Use your own data to create a scatterplot with a regression line 
+3. A study was done on 100 participants. For each participant the same data was collected and stored in a csv file. The data is in [homework5.zip](https://github.com/HenrikEckermann/donders_r/raw/henrik/course_project/data/homework5.zip). Use a for loop (and/or map()) to import each datafile to a dataframe in R. You want to combine all these to a dataframe in the end. Don't use any other tools than those that we learned so far. There is one exception and that is the function bind_rows() that you may use. If you have no idea how to accomplish this, check the hints file. But try it without.
