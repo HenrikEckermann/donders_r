@@ -42,3 +42,23 @@ Check which questions we cover per session. One session is meant to consist of m
 - group_by 
 - write your own functions 
 - use if/else statements
+
+
+
+**Session 5: ggplot2 basics and Iteration**   
+
+- grammar of graphics
+- scatterplot with regression line 
+- for loops 
+- while loops 
+- map function 
+
+
+
+**Session 6: ggplot2**   
+
+- scatterplots 
+- linegraphs 
+- boxplots 
+- histograms 
+- barplots 

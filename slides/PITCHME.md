@@ -658,11 +658,6 @@ Note:
 
 +++
 
-
-
-
-
-
 @snap[north]
 Homework session 5
 @snapend
@@ -671,4 +666,32 @@ Homework session 5
 1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
 2. Use your own data to create a scatterplot with a regression line 
 3. A study was done on 100 participants. For each participant the same data was collected and stored in a csv file. The data is in [homework5.zip](https://github.com/HenrikEckermann/donders_r/raw/henrik/course_project/data/homework5.zip). Use a for loop to import each datafile to a dataframe in R. You want to combine all these to a dataframe in the end. Don't use any other tools than those that we learned so far. There is one exception and that is the function bind_rows() that you could use. If you have no idea how to accomplish this, check the hints file. But try it without.
+@snapend
+
+
+
+<!-- session 6 -->
+
+---
+
+@snap[mid]
+#### Session 6
+
+
+
+@snap[mid dtext text-07]
+ggplot2
+@snapend
+
+Note:
+
++++
+
+@snap[north]
+Homework session 6
+@snapend
+
+@snap[mid text-center text-05]
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
+
 @snapend
