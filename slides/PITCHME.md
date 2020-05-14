@@ -693,5 +693,7 @@ Homework session 6
 
 @snap[mid text-center text-05]
 1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
-
+2. Force yourself to use ggplot2 for a year to create all your plots.  
+3. Try out patchwork: https://github.com/thomasp85/patchwork  
+4. Think about plots that need for your data and projects (including publications) and create them!
 @snapend

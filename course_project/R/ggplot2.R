@@ -296,3 +296,32 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
 
 
 
+
+
+# illustrate some useful features:
+
+
+head(childcare)
+ggplot(childcare, aes(time, age_d)) +
+  geom_jitter(width = 0.2, color = ifelse(childcare$age_d > 145 | childcare$age_d < 65, "red", "black"))
+
+
+ggplot(childcare, aes(time, age_d)) +
+  geom_jitter(width = 0.2) +
+  geom_hline(yintercept = 65, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 145, linetype = "dashed", color = "red") 
+  
+
+
+# install.packages(ggrepel)
+  
+ggplot(childcare, aes(time, age_d)) +
+  geom_jitter(width = 0.2) +
+  geom_hline(yintercept = 65, linetype = "dashed", color = "red") +
+  geom_hline(yintercept = 145, linetype = "dashed", color = "red") +
+  ggrepel::geom_text_repel(data = filter(childcare, age_d < 65 | age_d > 145), aes(label = id))
+  
+
+
+# also play with patchwork: https://github.com/thomasp85/patchwork
+# devtools::install_github("thomasp85/patchwork")

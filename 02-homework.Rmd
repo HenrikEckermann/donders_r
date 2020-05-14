@@ -63,5 +63,5 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
 
 
 **Session 6: ggplot2 basics and iteration**  
-1. Download the [script]() and try to understand the content.  
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/tree/henrik/course_project/R) and try to understand the content.  
 
