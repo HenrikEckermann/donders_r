@@ -1,6 +1,6 @@
 # Structure of the course {#structure}
 
-Check which questions we cover per session. One session is meant to consist of maximal 1 hour lecture (depending on the topic also less) as well as a homework that takes about 1 hour to complete.
+Check which questions we cover per session. One session is meant to consist of maximal 1 hour lecture (depending on the topic also less) as well as a homework that takes about 1.5 hours to complete.
 
 **Session 1: Before you learn the language** 
 
@@ -62,3 +62,14 @@ Check which questions we cover per session. One session is meant to consist of m
 - boxplots 
 - histograms 
 - barplots 
+
+
+**Session 7: Basics of Linear Regression**  
+
+- how linear regression utilizes the gaussian distribution  
+- which assumptions does this imply?  
+- how to perform basic multiple linear regression in R  
+- how to test these assumptions   
+
+
+**Session 8: Using Rmarkdown for scientific reporting**  

@@ -1,6 +1,13 @@
+
+
+library(ggthemes)
 library(tidyverse)
 # run install.packages("nycflights13)" before the next line 
 library(nycflights13) # for several dataframes 
+
+
+# to set a different default theme:
+old <- theme_set(theme_bw(base_size = 20))
 
 
 
@@ -19,15 +26,16 @@ head(milk)
 
 # check https://ggplot2.tidyverse.org/reference/geom_point.html (aesthetics)
 # alpha, size, color, shape and more  
-ggplot(milk, aes(x = neocortex.perc, y = kcal.per.g)) +
+ggplot(milk, aes(x = neocortex.perc, y = kcal.per.g, size = perc.protein)) +
   geom_point(
     alpha = 0.5, 
     size = 10, 
     color = "blue", 
-    shape = 21, 
-    fill = "white",
+    shape = 2, 
+    fill = "black",
     stroke = 5
   )
+  
   
 # if you want to make these aesthetics depend on a certain variable you do that
 # withing the aes function at the top level (ggplot) but you can also do it 
@@ -46,26 +54,26 @@ colors()
 
 
 # this results in the same plot 
-ggplot(milk, aes(x = neocortex.perc, y = kcal.per.g)) +
+ggplot(milk) +
   geom_point(
-    aes(shape = clade, color = clade),
+    aes(x = neocortex.perc, y = kcal.per.g, shape = clade, color = clade),
     alpha = 0.5, 
     size = 7,  
     fill = "white",
     stroke = 5
-  )
+  ) 
 
 # we cover why this can be useful later 
 
 
 # you want to plot a categorical with a numerical variable, use jitter instead
 ggplot(milk, aes(x = clade, y = kcal.per.g)) +
-  geom_point(size = 5)
+  geom_point(size = 5, alpha = 0.4)
   
 ggplot(milk, aes(x = clade, y = kcal.per.g)) +
   geom_jitter(width = 0.1, size = 5)
   
-  
+
   
 #####################################################################
 ##########               Line graphs                       ##########
@@ -81,9 +89,18 @@ df <- tibble(
 
 
 
+df[1, "value"]
+
+
+
+
+
 for (i in df$sequen[-1]) {
    df[i, "value"] <- df[i - 1, "value"] + runif(-1, 1, n = 1)
 }
+
+df
+
 
 ggplot(df, aes(x = sequen, y = value)) +
   geom_line()
@@ -112,7 +129,7 @@ weather %>%
 
 # 1. cut the x-axis into a series of bins, where each represents a range of x
 # 2. for each bin, we count the number of observations that fall in the range 
-# 3. for each bar draw the hight according to the count
+# 3. for each bin we draw a bar with a hight according to the count
 
 # geom_point is not really useful here 
 ggplot(weather, aes(x = temp, y = 0)) +
@@ -130,7 +147,12 @@ ggplot(weather, aes(x = temp)) +
 ggplot(weather, aes(x = temp)) +
   geom_histogram(binwidth = 10, color = "white", fill = "steelblue")
   
-  
+# geom_density()
+
+
+
+
+
   
 #####################################################################
 ##########                  facets                         ##########
@@ -145,7 +167,7 @@ ggplot(weather, aes(x = temp)) +
 # play with nrows or alternatively ncols
 ggplot(weather, aes(x = temp)) +
   geom_histogram(binwidth = 5, color = "white") +
-  facet_wrap(~month, nrow = 4)
+  facet_wrap(~month, ncol = 2)
 
 # I want you to be aware of the scales argument ("free", "free_x")
 ggplot(weather, aes(x = temp)) +
@@ -172,10 +194,12 @@ ggplot(weather, aes(x = temp)) +
 # should be a categorical variable 
 
 ggplot(weather, aes(y = temp)) +
-  geom_boxplot()
+  geom_boxplot() +
+  facet_wrap(~month)
   
+weather$month <- as.factor(weather$month)
 # with a categorical on the x axis (see now you get outliers)
-ggplot(weather, aes(x = factor(month), y = temp)) +
+ggplot(weather, aes(x = month, y = temp)) +
   geom_boxplot()
 
 
@@ -211,6 +235,10 @@ childcare <- childcare %>% mutate(
   sibling = as.factor(sibling),
   csection = as.factor(csection)
 )
+
+
+
+
 # joint distribution of two categoricals:
 ggplot(childcare, aes(sibling)) +
   geom_bar()
@@ -261,11 +289,10 @@ ggplot(mtcars, aes(x = cyl, y = wt)) +
 ggplot(mtcars, aes(x = cyl,y = wt)) +
   geom_jitter(width = 0.2) +
   stat_summary(fun.y = mean, geom = 'point', color = 'red') +
-  stat_summary(fun.data = mean_sdl, fun.args = list(mult = 1), geom = "errorbar", width = 0.2, col = 'red') +
-  theme_bw()
+  stat_summary(fun.data = mean_sdl, fun.args = list(mult = 1), geom = "errorbar", width = 0.2, col = 'red') 
   
   
-  
+
   
   
 
@@ -314,7 +341,7 @@ ggplot(childcare, aes(time, age_d)) +
 
 
 # install.packages(ggrepel)
-  
+
 ggplot(childcare, aes(time, age_d)) +
   geom_jitter(width = 0.2) +
   geom_hline(yintercept = 65, linetype = "dashed", color = "red") +
@@ -325,3 +352,5 @@ ggplot(childcare, aes(time, age_d)) +
 
 # also play with patchwork: https://github.com/thomasp85/patchwork
 # devtools::install_github("thomasp85/patchwork")
+
+

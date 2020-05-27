@@ -697,3 +697,103 @@ Homework session 6
 3. Try out patchwork: https://github.com/thomasp85/patchwork  
 4. Think about plots that need for your data and projects (including publications) and create them!
 @snapend
+
+
+
+
+
+
+
+
+
+<!-- session 7 -->
+
+---
+
+@snap[mid]
+#### Session 7
+
+
+
+@snap[mid dtext text-07]
+Linear Regression
+@snapend
+
+Note:
+
++++
+
+#### Why fit a model?
+
+1. To infer population parameters
+2. To predict unseen cases 
+
+Note:
+- both can be used to test hypothesis or support building a theory in other ways
+
++++
+#### What is a parameter 
+
+Here: something that we do not know and need to estimate from the data.
+
+Note:  
+- Bayesian vs Frequentist
+
++++
+@snap[north span-100]
+### Linear Regression:  
+##### Estimate y using a Gaussian Distribution
+@snapend
+
+@snap[midpoint span-100]
+@math
+`\[
+y \sim N(\mu,\sigma)
+\]`
+@mathend
+@snapend
+
+Note:  
+- We assume that we can describe the data using a gaussian distribution 
+- 2 parameters need to be estimated for a gaussian distribution 
+- show different gaussian distributions in R
+
++++
+
+
+@snap[north span-100]
+### Linear Regression:  
+##### Estimate y using a Gaussian Distribution
+@snapend
+
+
+@snap[midpoint span-100]
+@math
+`\[
+y \sim N(\mu,\sigma)
+\]`
+@mathend
+@snapend
+
+@snap[south span-100]
+@math
+`\[
+\mu_i = \alpha + \beta_1X_{1i} + \beta_2X_{2i} + \beta_nX_{ni}
+\]`
+@mathend
+@snapend
+
+Note:  
+- now beta and alpha become the parameters to be estimated
+
++++
+
+@snap[north]
+Homework session 7
+@snapend
+
+@snap[mid text-center text-05]
+1. Download the [script]() and try to understand the content.
+
+@snapend
+

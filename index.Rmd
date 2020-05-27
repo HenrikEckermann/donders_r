@@ -53,6 +53,7 @@ Follow the below steps before the course:
 1. [Tidyverse coding style](https://style.tidyverse.org/index.html)  
 2. [Statistical Inference via Data Science - A ModernDive into R and the tidyverse](https://moderndive.com/index.html)  
 3. [R for Datascience](https://r4ds.had.co.nz/)  
+4. [How to do analyses X in R](https://www.statmethods.net/)
 
 
 

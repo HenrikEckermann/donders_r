@@ -1,4 +1,5 @@
 theme : template
+mathjax : TeX-MML-AM_HTMLorMML-full
 theme-background : [ "#FFF" ]
 theme-headline   : [ "Oswald", "#000000", "none" ]
 theme-byline     : [ "Lato", "#111111", "none" ]
@@ -40,3 +41,7 @@ thumbnail : https://gitpitch.com/gpimg/tutorial-thumb.png
 # logo-position    : top-right
 # layout           : center
 # PITCHME-DOT-YAML-SETTINGS-THEME-BUILDER-GENERATED-END
+
+
+
+
