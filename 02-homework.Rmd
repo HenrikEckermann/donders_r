@@ -14,13 +14,13 @@
 
 Create an rProject using Rstudio incl. a folder for your R code and your data.
 
- 
+
 
 
 **Session 2: Introduction to R**  
 
-1. Take a look at the [Tidyverse coding style guide](https://style.tidyverse.org/files.html).
-2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/donders_course/R/basics.R) and try to understand the content.
+1. Read the intro of the [Tidyverse coding style guide](https://style.tidyverse.org/files.html). Read on during the course whenever in doubt what the correct style is.
+2. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/course_project/R/basics.R) and try to understand the content.
 3. Then, create 3 vectors: A logical, a character and a numeric one that have an equal length of 5.
 4. Create a list that contains all the vectors.
 5. Take one of the vectors and select:
@@ -53,3 +53,23 @@ Create an rProject using Rstudio incl. a folder for your R code and your data.
 2. Structure and manipulate your own data as far as you can. Also obtain useful summary statistics of your own data by making use of group_by and summarise functions.  
 3. Write a function that takes as arguments two numeric vectors and returns a named list that shows the Pearson as well as the Spearman correlation of these vectors.  
 4. Now rewrite this function by giving it another argument (linear = FALSE). Write the function so that it returns Pearson correlation when linear == TRUE and otherwise Spearman correlation.
+
+
+**Session 5: ggplot2 basics and iteration**  
+1. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/henrik/course_project/R/ggplot_basics_and_iteration.R) and try to understand the content.  
+2. Use your own data to create a scatterplot with a regression line   
+3. A study was done on 100 participants. For each participant the same data was collected and stored in a csv file. The data is in [homework5.zip](https://github.com/HenrikEckermann/donders_r/raw/henrik/course_project/data/homework5.zip). Use a for loop (and/or map()) to import each datafile to a dataframe in R. You want to combine all these to a single dataframe in the end. Do not use any other tools than those that we learned so far. There is one exception and that is the function bind_rows() that you may use. If you have no idea how to accomplish this, check this [hints file](https://raw.githubusercontent.com/HenrikEckermann/donders_r/henrik/course_project/data/hw5_hint.txt) file. But try it without.  
+
+
+
+**Session 6: ggplot2**  
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/tree/henrik/course_project/R) and try to understand the content.  
+
+
+**Session 7: Basics of Linear Regression**  
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/tree/henrik/course_project/R) and try to understand the content.   
+2. Go through [this site](https://www.statmethods.net/stats/index.html) and see how to do the most common analyses in R.   
+
+
+
+**Session 8: Using Rmarkdown for scientific reporting**  

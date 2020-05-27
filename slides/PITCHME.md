@@ -489,3 +489,311 @@ Homework session 4
 3. Write a function that takes as arguments two numeric vectors and returns a named list that shows the Pearson as well as the Spearman correlation of these vectors.
 4. Now rewrite this function by giving it another argument (linear = FALSE). Write the function so that it returns Pearson correlation when linear == TRUE and otherwise Spearman correlation.
 @snapend
+
+
+
+
+
+
+
+<!-- session 5 -->
+
+---
+
+@snap[mid]
+#### Session 5
+
+
+
+@snap[mid dtext text-07]
+1. ggplot2
+2. Iteration
+@snapend
+
+Note:
+
++++
+
+### ggplot2
+
+Note:  
+
+- plotting is the perfect start of your analysis (inspect/explore outliers, distributions and relationships of your variables)
+- plotting is also the perfect end because you can communicate your findings through a plot
+- R has many systems to plot but ggplot is one of the most versatile
+- learn one system and apply it in many places
+
++++
+
+
+### The grammar of graphics
+
++++
+
+@snap[north text-center]
+### The grammar of graphics
+@snapend
+
+
+
+
+A statistical graphic is a ```mapping``` of ```data``` variables to ```aes``` thetic attributes of ```geom``` etric objects. 
+
+@snap[south]
+```r 
+ggplot(data = mtcars, aes(x = cyl, y = mpg)) + 
+  geom_point() +
+  geom_smooth()
+```
+@snapend
+
+
+
++++
+
+Three essential components
+
+1. data
+2. geom
+3. aes
+
+Note:  
+1. the dataset containing the variables of interest.
+2. the geometric object in question. This refers to the type of object we can observe in a plot. For example: points, lines, and bars.
+3. aesthetic attributes of the geometric object. For example, x/y position, color, shape, and size. Aesthetic attributes are mapped to variables in the dataset.
+
+
+
++++
+
+#### Example data: gapminder
+
+![](assets/img/gapminder_head.png)
+
++++
+
+@snap[north span-100]
+![](assets/img/gapminder-1.png)
+@snapend
+
+
+
+@snap[south span-400]
+```r 
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, size = pop, col = continent)) +  .
+  geom_point()
+```
+@snapend
+
+Note:  
+
+1. the **data** variable GDP per Capita gets mapped to the **x** -position **aes**  thetic of the points
+2. the **data** variable life expectancy gets mapped to the **y** -position **aes** thetic of the points
+3. the **data** variable population gets mapped the **size** **aes** thetic of the points.
+4. the **data** variable continent gets mapped to the **color** **aes**thetic of the points
+
+- data refers to a dataframe and to define the aes we need the colnames
+- in this case the geometric object is point. There are many different objects available such as lines, barplots, boxplots, violinplots and more.
+- we can add other layers such as plot titles, axes labels, different themes and facets
+
++++
+
+1. Scatterplots
+2. Linegraphs
+3. Boxplots 
+4. Histograms 
+5. Barplots 
+
++++
+
+Google "plottype + ggplot"
+
+
++++
+
+
+@snap[north text-center]
+### Do not repeat yourself
+@snapend
+
+@snap[west span-45 text-center]
+#### Why
+@snapend
+
+@snap[east span-45 text-center text-07]
+- focus on what is different rather than similar
+- Many places vs 1 place when code needs change
+- fewer bugs
+@snapend
+
++++
+
+@snap[north text-center]
+### Do not repeat yourself
+@snapend
+
+@snap[west span-45 text-center]
+#### How
+@snapend
+
+@snap[east span-45 text-center text-07]
+1. Functions 
+2. Iteration 
+@snapend
+
+Note:
+
+1. Functions: By identifying repeated patterns of code and generalizing these repetitions so it can be reused.
+2. When you have to do the same thing to multiple inputs once
+
++++
+
+
+#### For loops 
+
+
++++
+
+#### While loops 
+
++++
+
+@snap[north]
+Homework session 5
+@snapend
+
+@snap[mid text-center text-05]
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
+2. Use your own data to create a scatterplot with a regression line 
+3. A study was done on 100 participants. For each participant the same data was collected and stored in a csv file. The data is in [homework5.zip](https://github.com/HenrikEckermann/donders_r/raw/henrik/course_project/data/homework5.zip). Use a for loop to import each datafile to a dataframe in R. You want to combine all these to a dataframe in the end. Don't use any other tools than those that we learned so far. There is one exception and that is the function bind_rows() that you could use. If you have no idea how to accomplish this, check the hints file. But try it without.
+@snapend
+
+
+
+<!-- session 6 -->
+
+---
+
+@snap[mid]
+#### Session 6
+
+
+
+@snap[mid dtext text-07]
+ggplot2
+@snapend
+
+Note:
+
++++
+
+@snap[north]
+Homework session 6
+@snapend
+
+@snap[mid text-center text-05]
+1. Download the [script](https://github.com/HenrikEckermann/donders_r/blob/master/course_project/R/datamanipulation_and_functions.R) and try to understand the content.
+2. Force yourself to use ggplot2 for a year to create all your plots.  
+3. Try out patchwork: https://github.com/thomasp85/patchwork  
+4. Think about plots that need for your data and projects (including publications) and create them!
+@snapend
+
+
+
+
+
+
+
+
+
+<!-- session 7 -->
+
+---
+
+@snap[mid]
+#### Session 7
+
+
+
+@snap[mid dtext text-07]
+Linear Regression
+@snapend
+
+Note:
+
++++
+
+#### Why fit a model?
+
+1. To infer population parameters
+2. To predict unseen cases 
+
+Note:
+- both can be used to test hypothesis or support building a theory in other ways
+
++++
+#### What is a parameter 
+
+Here: something that we do not know and need to estimate from the data.
+
+Note:  
+- Bayesian vs Frequentist
+
++++
+@snap[north span-100]
+### Linear Regression:  
+##### Estimate y using a Gaussian Distribution
+@snapend
+
+@snap[midpoint span-100]
+@math
+`\[
+y \sim N(\mu,\sigma)
+\]`
+@mathend
+@snapend
+
+Note:  
+- We assume that we can describe the data using a gaussian distribution 
+- 2 parameters need to be estimated for a gaussian distribution 
+- show different gaussian distributions in R
+
++++
+
+
+@snap[north span-100]
+### Linear Regression:  
+##### Estimate y using a Gaussian Distribution
+@snapend
+
+
+@snap[midpoint span-100]
+@math
+`\[
+y \sim N(\mu,\sigma)
+\]`
+@mathend
+@snapend
+
+@snap[south span-100]
+@math
+`\[
+\mu_i = \alpha + \beta_1X_{1i} + \beta_2X_{2i} + \beta_nX_{ni}
+\]`
+@mathend
+@snapend
+
+Note:  
+- now beta and alpha become the parameters to be estimated
+
++++
+
+@snap[north]
+Homework session 7
+@snapend
+
+@snap[mid text-center text-05]
+1. Download the [script]() and try to understand the content.
+
+@snapend
+
