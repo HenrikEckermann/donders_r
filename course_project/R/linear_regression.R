@@ -54,9 +54,9 @@ model1 <- lm(formula = height ~ 1, data = adults)
 summary(model1)
 
 # what happens if we standardize the outcome?
-adults <- mutate(adults, height_s = scale(height)[, 1])
-model1_s <- lm(formula = height_s ~ 1, data = adults)
-summary(model1_s)
+# adults <- mutate(adults, height_s = scale(height)[, 1])
+# model1_s <- lm(formula = height_s ~ 1, data = adults)
+# summary(model1_s)
 
 
 class(model1)
