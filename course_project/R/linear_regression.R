@@ -13,9 +13,11 @@ library(glue)
 #####################################################################
 
 
-mu <- 178
+mu <- 10
 sigma <- 1
 y <- rnorm(mean = mu, sd = sigma, n = 1e5)
+
+y[1:10]
 
 df <- tibble(y = y)
 
@@ -40,18 +42,28 @@ ggplot(adults, aes(height)) +
 # another way of showing the data 
 adults %>% mutate(id = 1:dim(adults)[1]) %>%
   ggplot(aes(id, height)) +
-    geom_point()
+    geom_point() # +
+    # geom_hline(yintercept = mean(adults$height), size = 3, color = "red") 
 
 
 # If we have only the outcome "height" and nothing more, what would be our guess
 # if someone asked us about the height of a random person of the same
 # population (not the same sample of adults)? Lets ask our regression robot:
 
-model1 <- lm(height ~ 1, data = adults)
-class(model1)
-model1$coefficients
+
+model1 <- lm(formula = height ~ 1, data = adults)
 summary(model1)
 
+# what happens if we standardize the outcome?
+adults <- mutate(adults, height_s = scale(height)[, 1])
+model1_s <- lm(formula = height_s ~ 1, data = adults)
+summary(model1_s)
+
+
+class(model1)
+model1$coefficients
+residuals(model1)
+coefficients(model1)
 
 # given our data and this model (linear regression), our best guess would be 
 # 154.75. We are pretty confident that this is our best guess (see standard
@@ -414,6 +426,37 @@ plot(model)
 
 # Now you know how to perform a regression. What else do you need to know 
 # how to do in R in the context of regression?
+
+
+# Hilde: How to do t-test:
+
+# the standard t-test (as we saw) assumes homogeneity of variance
+# you need to test this:
+library(car)
+leveneTest(adults$height, adults$male)
+# then you can use the standard test 
+males <- filter(adults, male == 1) %>% .$height 
+females <- filter(adults, male == 0) %>% .$height
+t.test(males, females, var.equal = TRUE)
+
+# or here easier: 
+t.test(height ~ male, data = adults, var.equal = TRUE)
+
+# (problem with homogeneity of variance)
+# a great feature in R is that the default is actually Welch t-test:
+# (see https://www.rips-irsp.com/articles/10.5334/irsp.82/)
+t.test(height ~ male, data = adults)
+
+males <- na.omit(males)
+males_post <- males + rnorm(n = length(males), 4, 1)
+# perform a paired t test 
+t.test(males, males_post, var.equal = TRUE, paired = TRUE)
+
+
+# always check the function documentation no matter which analyses you use 
+# e.g.: how does the model treat missingness? Often listwise deletion is
+# default. But also some model impute by default or throw an error.
+
 
 # as homework, please go through this page to see how to do x in R:
 # https://www.statmethods.net/stats/index.html

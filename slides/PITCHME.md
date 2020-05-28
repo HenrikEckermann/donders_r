@@ -734,9 +734,10 @@ Note:
 +++
 #### What is a parameter 
 
-Here: something that we do not know and need to estimate from the data.
+Here: unknown value (or distribution) that we want to estimate from the data.
 
 Note:  
+- often used for different things 
 - Bayesian vs Frequentist
 
 +++
@@ -793,7 +794,8 @@ Homework session 7
 @snapend
 
 @snap[mid text-center text-05]
-1. Download the [script]() and try to understand the content.
+1. Download the [script](https://raw.githubusercontent.com/HenrikEckermann/donders_r/master/course_project/R/linear_regression.R) and try to understand the content.   
+2. Go through [this site](https://www.statmethods.net/stats/index.html) and see how to do the most common analyses in R.
 
 @snapend
 
