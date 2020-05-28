@@ -27,8 +27,7 @@ ggplot(df, aes(y = y)) +
 
 
 # to illustrate how linear regression makes use of the gaussian distribution
-# let us model an example where I show you how we can use Linear regression 
-# to predict unseen cases.
+# let us model an example for the purpose of prediction.
 
 
 data(Howell1, package = "rethinking")
@@ -69,7 +68,7 @@ coefficients(model1)
 # 154.75. We are pretty confident that this is our best guess (see standard
 # error). But we also know that our guess will only be good on average and 
 # that each single guess can be far off (residual standard error). Our model 
-# "thinks" that like this: (illustrating why 157.75 is it's best guess): 
+# "thinks" like this: (illustrating why 157.75 is it's best guess): 
 
 height <- rnorm(mean = 154.7477, sd = 7.799, n = 1e5)
 df_height <- tibble(
