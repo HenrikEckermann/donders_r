@@ -33,9 +33,9 @@ df <- read_csv(here::here("data/rmd_example.csv"))
 
 ```{r}
 ttest <- t.test(y ~ group, data = df)
+ttest
 tstat <- round(ttest$statistic, 2)
 pvalue <- round(ttest$p.value, 3)
-pvalue
 ```
 
 
