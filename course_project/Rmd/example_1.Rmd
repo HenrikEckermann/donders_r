@@ -1,0 +1,166 @@
+---
+title: "Results"
+output:
+  html_document:
+    theme: united
+    highlight: tango
+bibliography: "bib/final.bib"
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+library(patchwork)
+source("https://raw.githubusercontent.com/HenrikEckermann/in_use/master/reporting.R")
+source("https://raw.githubusercontent.com/HenrikEckermann/in_use/master/ml_helper.R")
+
+opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+
+```{r}
+data(Howell1, package = "rethinking")
+df <- Howell1
+
+df <- mutate(df, gender = ifelse(male == 1, "male", ifelse(male == 0, "female", NA))) %>%
+      mutate(gender = as.factor(gender)) %>%
+      mutate_if(is.numeric, function(x) scale(x)[, 1]) %>%
+      select(-male)
+df$id <- c(1:length(df$height))
+```
+
+
+
+
+
+```{r}
+# descriptive statistics
+sum_funs <- c("mean", "sd", "min", "max")
+sum_rows <- map_dfr(sum_funs, function(fun) {
+  df_cont <- Howell1 %>%
+    summarise_if(is.numeric, fun) %>%
+    mutate(statistic = fun) %>%
+    mutate_if(is.numeric, round, 2) %>%
+    select(statistic, height, weight, age)
+})
+table_1 <- sum_rows %>% 
+  pivot_longer(-statistic, names_to = "variable", values_to = "value") %>%
+  pivot_wider(names_from = statistic, values_from = value)
+```
+
+
+
+
+
+```{r}
+# main analysis
+model <- lm(height ~ weight + gender, data = df)
+coefs <- model %>%
+  summary() %>%
+  coefficients %>%
+  as.data.frame() %>%
+  rownames_to_column("Parameter") %>%
+  mutate_if(is.numeric, round, 3) %>%
+  select(Parameter, Estimate, "Standard Error" = "Std. Error", "t-value" = "t value", "p-value" = "Pr(>|t|)") %>%
+  mutate(Parameter = ifelse(Parameter == "(Intercept)", "intercept", ifelse(Parameter == "gendermale", "male", Parameter)))
+```
+
+
+
+
+```{r }
+diag_plot <- lm_diag(model, df, "height")
+```
+
+
+
+```{r}
+# main analysis part 2
+colnames(df) <- c("height_s", "weight_s", "age_s", "gender", "id")
+df <- mutate(df, weight_s2 = weight_s ^ 2, weight_s3 = weight_s ^ 3)
+model2 <- lm(height_s ~ weight_s + weight_s2 + weight_s3 + gender, data = df)
+coefs <- model2 %>%
+  summary() %>%
+  coefficients %>%
+  as.data.frame() %>%
+  rownames_to_column("Parameter") %>%
+  mutate_if(is.numeric, round, 3) %>%
+  select(Parameter, Estimate, "Standard Error" = "Std. Error", "t-value" = "t value", "p-value" = "Pr(>|t|)") %>%
+  mutate(
+    Parameter = ifelse(
+      Parameter == "(Intercept)", "intercept", 
+      ifelse(Parameter == "gendermale", "male", Parameter)))
+
+table_2 <- coefs %>%
+  mutate(`p-value` = report_p(`p-value`, p_str = FALSE))
+```
+
+```{r}
+diag_plot2 <- lm_diag(model2, df, "height_s")
+```
+
+
+```{r results = "asis"}
+kable(table_1, booktabs = TRUE, caption = "Descriptive Statistics") %>%
+  kable_styling(position = "center") %>%
+  kable_styling(full_width = T) %>%
+  footnote(general = "Some table note", footnote_as_chunk = TRUE)
+```
+
+
+
+
+Table 1 shows descriptive statistics of the study variables. There were no missing values in the data and all participants were included for our final analysis. In the first analysis step, we regressed height on weight and age. The assumptions of normality of residuals and homogeneity of variance were violated (figure 1). The diagnostic plots suggest that a curvelinear model should be more suitable. Following the guidelines of @deweerthBacteriaShapeOur2017 we fitted a quadratic model in the next step, which led to a more appropriate model (figure 2). The final model was as follows:
+
+$$y_i \sim N(\mu, \sigma)$$
+$$\mu_i = \beta_0 + \beta_1 \times weight + \beta_2 \times weight^2 + \beta_3 \times weight^3 + \beta_4 \times gender$$
+
+
+```{r, fig.cap="Diagnostic Plots Standard Regression Model"}
+diag_plot
+```
+
+```{r,fig.cap="Diagnostic Plots Polynomial Regression"}
+diag_plot2
+```
+
+
+We found that weight is positively associated with height (table 2) and that the relation can best be described using a polynomial regression model. However, the assumptions of constant variance remains violated as the error variation increases with age indicating that we miss important predictors that explain height development in humans. Furthermore we found that males are `r coefs[coefs$Parameter == "male", "Estimate"]` taller than females on average (`r report_p(coefs[coefs$Parameter == "male", "p-value"])`).  Figure 3 shows the regression lines for each gender that are most compatible with the real observations (black dots).
+
+
+
+```{r results = "asis"}
+kable(table_2, booktabs = TRUE, caption = "Regression Coefficients") %>%
+  kable_styling(position = "center") %>%
+  kable_styling(full_width = T) %>%
+  footnote(general = "Some table note", footnote_as_chunk = TRUE)
+```
+
+```{r, fig.cap="Regression lines of the final model"}
+new_data <- tibble(
+  weight_s = rep(seq(-3, 3, length.out = 40), 2),
+  weight_s2 = weight_s ^ 2,
+  weight_s3 = weight_s ^ 3,
+  gender = rep(c("male", "female"), each = 40)
+  ) %>%
+  mutate(gender = as.factor(gender))
+pred <- predict(model2, new_data)
+new_data <- new_data %>% add_column(pred = pred)
+ggplot(new_data, aes(weight_s, pred)) +
+  geom_point(data = df, aes(weight_s, height_s), alpha = 0.5) +
+  geom_line(color = "firebrick", size = 1) +
+  facet_wrap(~gender) +
+  theme_bw(base_size = 15)
+```
+
+
+
+
+
+
+# References
+
+
+
+

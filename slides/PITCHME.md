@@ -799,3 +799,84 @@ Homework session 7
 
 @snapend
 
+
+
+<!-- session 8 -->
+
+---
+
+@snap[mid]
+#### Session 8
+
+
+
+@snap[mid dtext text-07]
+Rmarkdown
+@snapend
+
+Note:
+
+
+
++++
+
+@snap[midpoint span-100]
+@img[span-20](assets/img/rmarkdown.png)
+@snapend
+
+@snap[north span-50]
+@img[span-20](assets/img/bookdown.png)
+@snapend
+
+@snap[east span-45]
+@img[span-20](assets/img/word.png)
+@snapend
+
+@snap[west span-55]
+@img[span-20](assets/img/html.png)
+@snapend
+
+ 
+
+@snap[south span-12]
+@img[span-80](assets/img/adobepdf.png) 
+@snapend
+
+
+
+Note:
+Rmarkdown is perfectly suited to create reproducible reports of most common output formats. You can save and execute code and the same time create high quality reports. This makes it perfect to present your analyses and knowledge to a wide audience in many different formats. You can use it to build websites, theses, books, presentations and analysis reports etc. It also makes it very easy to reuse your own material. It works as a swiss knife for data science.
+
+
++++
+
+
+@img[](assets/img/rmarkdown_example.png) 
+
+Note:
+The way this works is that you can write plain text (blue) whereby you can use Markdown to format your text. To those who are not familiar with Markdown: I included a quick tutorial how to use it to format your text.
+
++++
+
+@img[](assets/img/rmarkdownflow.png)
+
++++
+
+
+#### Homework session 8
+
+1.  Read chapter 2 of [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) (skip section you do not need)
+2. Add chapters according to what you plan to do first with Rmarkdown
+
+Note: 
+
+
+
++++
+
+#### Further Reading  
+
+- [Rmarkdown](https://bookdown.org/yihui/rmarkdown/) 
+- [Papaja for APA reports](https://crsh.github.io/papaja_man/introduction.html)
+- [Bookdown for books](https://bookdown.org/yihui/bookdown/)
+- [Blogdown for your own website](https://bookdown.org/yihui/blogdown/)

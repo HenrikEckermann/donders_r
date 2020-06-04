@@ -24,6 +24,10 @@ df <- tibble(y = y)
 ggplot(df, aes(y = y)) +
   geom_density() +
   coord_flip()
+  
+  
+library(mice)
+?mice()
 
 
 # to illustrate how linear regression makes use of the gaussian distribution
@@ -41,34 +45,36 @@ ggplot(adults, aes(height)) +
 # another way of showing the data 
 adults %>% mutate(id = 1:dim(adults)[1]) %>%
   ggplot(aes(id, height)) +
-    geom_point() # +
-    # geom_hline(yintercept = mean(adults$height), size = 3, color = "red") 
+    geom_point()  +
+    geom_hline(yintercept = mean(adults$height), size = 3, color = "red") 
 
 
 # If we have only the outcome "height" and nothing more, what would be our guess
 # if someone asked us about the height of a random person of the same
 # population (not the same sample of adults)? Lets ask our regression robot:
 
-
-model1 <- lm(formula = height ~ 1, data = adults)
+model1 <- lm(formula = height ~ 1, data = adults, )
 summary(model1)
+
+
 
 # what happens if we standardize the outcome?
 # adults <- mutate(adults, height_s = scale(height)[, 1])
 # model1_s <- lm(formula = height_s ~ 1, data = adults)
 # summary(model1_s)
 
-
-class(model1)
+# example functions that work on the lm object
 model1$coefficients
-residuals(model1)
-coefficients(model1)
+
+coef(model1)
 
 # given our data and this model (linear regression), our best guess would be 
 # 154.75. We are pretty confident that this is our best guess (see standard
 # error). But we also know that our guess will only be good on average and 
 # that each single guess can be far off (residual standard error). Our model 
 # "thinks" like this: (illustrating why 157.75 is it's best guess): 
+
+
 
 height <- rnorm(mean = 154.7477, sd = 7.799, n = 1e5)
 df_height <- tibble(
@@ -147,7 +153,7 @@ df_height %>%
 
 # we can plot this for a range of weight values:
 weight_seq <- seq(min(adults$weight) - 5, max(adults$weight) + 5, length.out = 30)
-weight_seq
+
 
 heights <- list()
 for (w in seq_along(weight_seq)) {
@@ -205,7 +211,7 @@ mu <- tibble(male = c(0, 1), mu = c(149.4578, 160.6104))
 ggplot(df_height, aes(male, height)) +
   geom_point() +
   geom_line(data = mu, aes(male, mu), size = 3, color = "red")
-  
+
 # again adding the real data: 
 ggplot(df_height, aes(male, height)) +
   geom_point(alpha = 0.1, color = "lightgrey") +
@@ -277,6 +283,8 @@ ggplot(heights, aes(weight, height)) +
       shape = 1,
       stroke = 1) +
   facet_wrap(~male)
+
+
 
 #####################################################################
 ##########               Performing Linear Regression      ##########
@@ -432,6 +440,7 @@ plot(model)
 # the standard t-test (as we saw) assumes homogeneity of variance
 # you need to test this:
 library(car)
+
 leveneTest(adults$height, adults$male)
 # then you can use the standard test 
 males <- filter(adults, male == 1) %>% .$height 

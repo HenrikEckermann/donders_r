@@ -1,0 +1,53 @@
+---
+title: "t-test"
+author: "Henrik Eckermann"
+date: "6/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r}
+library(tidyverse)
+
+# group <- rep(c(0, 1), each = 60)
+# y <- rnorm(mean = 4 + group * 2, sd = 4, n = 120)
+# df <- tibble(y = y, group = group, id = 1:120)
+# 
+# df <- mutate(df, y = ifelse(id %in% c(5, 13, 115, 119), y + rnorm(mean = 20, sd = 5, n = 1), y))
+# write_csv(df, path = here::here("data/rmd_example.csv"))
+
+df <- read_csv(here::here("data/rmd_example.csv"))
+
+# df <-  mutate_all(df, function(x) scale(x)[, 1])
+# filter(df, abs(y) > 3)
+```
+
+
+
+# T- test 
+
+```{r}
+ttest <- t.test(y ~ group, data = df)
+tstat <- round(ttest$statistic, 2)
+pvalue <- round(ttest$p.value, 3)
+pvalue
+```
+
+
+There was no significant difference in the mean between group 0 and group 1 (_t_ = `r tstat`, _p_ = `r pvalue`).
+
+
+
+# Plot 
+
+```{r}
+ggplot(df, aes(group, y)) +
+  geom_jitter(width = 0.1)
+```
+
+

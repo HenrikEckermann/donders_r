@@ -73,3 +73,7 @@ Check which questions we cover per session. One session is meant to consist of m
 
 
 **Session 8: Using Rmarkdown for scientific reporting**  
+- [Learn Markdown](https://www.markdowntutorial.com/) (preparation)   
+- What is Rmarkdown  
+- Why bother learning it?  
+- Example presentation  
